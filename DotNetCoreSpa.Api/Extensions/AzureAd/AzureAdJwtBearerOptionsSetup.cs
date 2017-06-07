@@ -14,7 +14,7 @@ namespace DotNetCoreSpa.Api.Extensions.AzureAd
         
         public void Configure(JwtBearerOptions jwtOptions)
         {
-            jwtOptions.Audience = _adOptions.Audience;
+            jwtOptions.Audience = _adOptions.ClientId;
             jwtOptions.Authority = _adOptions.Authority;
         }
     }
