@@ -1,0 +1,12 @@
+﻿{
+  "Authentication": {
+    "AzureAd": {
+      "AzureAdInstance": "https://login.microsoftonline.com/",
+      "ClientId": "[ client id ]",
+      "Audience": "https://[ domain ]/DotNetCoreSpa.Api",
+      "CallbackPath": "/signin-oidc",
+      "Domain": "[ domain ]",
+      "TenantId": "[ tenant id ]"
+    }
+  }
+}
