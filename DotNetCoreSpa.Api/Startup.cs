@@ -23,21 +23,25 @@ namespace DotNetCoreSpa.Api
             services.AddAzureAdWebApiAuthentication();
 
             services.AddMvc();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("Policy", builder => builder
+                    .WithOrigins(this.Configuration["Cors:Origin"])
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials()
+                );
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            app.UseCors("Policy");
+
             app.UseRewriter(new RewriteOptions().AddIISUrlRewrite(env.ContentRootFileProvider, "urlRewrite.config"));
-
-            app.UseCors(builder =>
-            {
-                builder.WithOrigins(this.Configuration["Cors:Origin"])
-                    .AllowAnyMethod()
-                    .AllowAnyHeader()
-                    .AllowCredentials();
-            });
-
+            
             app.UseAuthentication();
 
             app.UseMvc();
