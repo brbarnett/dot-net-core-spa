@@ -10,7 +10,7 @@ import { ValuesService } from '../services/values.service';
 })
 export class ValuesComponent implements OnInit {
 
-    private values: string = '';
+    private values: string = 'loading...';
 
     constructor(private valuesService: ValuesService) {}
 
