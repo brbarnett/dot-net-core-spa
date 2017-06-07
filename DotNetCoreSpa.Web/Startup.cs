@@ -1,6 +1,7 @@
 using DotNetCoreSpa.Web.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DotNetCoreSpa.Web
@@ -16,12 +17,14 @@ namespace DotNetCoreSpa.Web
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseRewriter(new RewriteOptions().AddIISUrlRewrite(env.ContentRootFileProvider, "urlRewrite.config"));
+
+            app.UseAngularRouting("/index.html", new[] { "/api/" });
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            app.UseAngularRouting("/index.html", new[] {"/api/"});
         }
     }
 }
