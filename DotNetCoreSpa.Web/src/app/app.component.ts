@@ -28,22 +28,22 @@ const config = AuthSecretService.getConfig();
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-    constructor(private authenticationService: Adal4Service, private http: Adal4HTTPService) {
-        this.authenticationService.init(config);
+    constructor(private auth: Adal4Service, private http: Adal4HTTPService) {
+        this.auth.init(config);
     }
 
     ngOnInit() {
 
         // Handle callback if this is a redirect from Azure
-        this.authenticationService.handleWindowCallback();
+        this.auth.handleWindowCallback();
 
         // Check if the user is authenticated. If not, call the login() method
-        if (!this.authenticationService.userInfo.authenticated) {
-            this.authenticationService.login();
+        if (!this.auth.userInfo.authenticated) {
+            this.auth.login();
         }
     }
 
     public logout() {
-        this.authenticationService.logOut();
+        this.auth.logOut();
     }
 }

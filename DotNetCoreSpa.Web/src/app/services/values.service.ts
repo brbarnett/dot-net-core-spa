@@ -10,9 +10,12 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class ValuesService {
 
-    constructor(private http: Adal4HTTPService) { }
+    constructor(private auth: Adal4Service, private http: Adal4HTTPService) { }
 
     public getValues(): Observable<string> {
+
+        console.log('Authenticated:', this.auth.userInfo.authenticated);
+
         return this.http.get('https://localhost:44332/api/values')
             .map((res: Response) => res.json())
             .catch((error: Response | any) => Observable.throw(error));
