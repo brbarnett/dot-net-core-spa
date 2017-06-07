@@ -30,6 +30,8 @@ namespace DotNetCoreSpa.Api
         {
             app.UseRewriter(new RewriteOptions().AddIISUrlRewrite(env.ContentRootFileProvider, "urlRewrite.config"));
 
+            app.UseCors(builder => builder.WithOrigins(this.Configuration["Cors:Origin"]));
+
             app.UseAuthentication();
 
             app.UseMvc();
