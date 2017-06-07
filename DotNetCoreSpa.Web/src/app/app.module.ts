@@ -2,7 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpModule, Http } from '@angular/http';
+
+// authentication - taken from https://github.com/benbaran/adal-angular4-example
+import { Adal4Service, Adal4HTTPService } from 'adal-angular4';
 
 // components
 import { AppComponent } from './app.component';
@@ -10,6 +13,7 @@ import { HomeComponent } from './home/home.component';
 import { ValuesComponent } from './values/values.component';
 
 // services
+import { AuthSecretService } from './services/auth-secret.service';
 import { ValuesService } from './services/values.service';
 
 const appRoutes: Routes = [
@@ -30,7 +34,14 @@ const appRoutes: Routes = [
         HttpModule
     ],
     providers: [
-        ValuesService
+        AuthSecretService,
+        ValuesService,
+        Adal4Service,
+        {
+            provide: Adal4HTTPService,
+            useFactory: Adal4HTTPService.factory,
+            deps: [Http, Adal4Service]
+        }
     ],
     bootstrap: [AppComponent]
 })
