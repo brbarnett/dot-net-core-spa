@@ -13,6 +13,7 @@ const config = AuthSecretService.getConfig();
             <nav>
                 <a routerLink="/" routerLinkActive="active">Home</a>
                 <a routerLink="/values" routerLinkActive="active">Values</a>
+                <a (click)="logout()">Logout</a>
             </nav>
         </header>
 
