@@ -14,10 +14,7 @@ export class ValuesService {
 
     public getValues(): Observable<string> {
         return this.http.get('https://localhost:44332/api/values')
-            .map((res: Response) => {
-                console.log('got values!');
-                return res.json();
-            })
+            .map((res: Response) => res.json())
             .catch((error: Response | any) => Observable.throw(error));
     }
 }
