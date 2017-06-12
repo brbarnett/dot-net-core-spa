@@ -15,6 +15,7 @@ import { ValuesComponent } from './values/values.component';
 // services
 import { AuthSecretService } from './services/auth-secret.service';
 import { AuthHttpService } from './services/auth-http.service';
+import { UrlService } from './services/url.service';
 import { ValuesService } from './services/values.service';
 
 const appRoutes: Routes = [
@@ -37,6 +38,7 @@ const appRoutes: Routes = [
     providers: [
         AuthHttpService,
         AuthSecretService,
+        UrlService,
         ValuesService,
         Adal4Service,
         {
