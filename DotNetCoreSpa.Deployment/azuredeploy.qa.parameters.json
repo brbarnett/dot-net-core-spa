@@ -13,6 +13,9 @@
     },
     "WebAppName": {
       "value": "dot-net-core-web-qa"
+    },
+    "EnvironmentName": {
+      "value": "QA"
     }
   }
 }

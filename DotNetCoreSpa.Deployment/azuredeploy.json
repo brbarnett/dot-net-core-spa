@@ -34,6 +34,10 @@
     "WebAppName": {
       "type": "string",
       "minLength": 1
+    },
+    "EnvironmentName": {
+      "type": "string",
+      "minLength": 1
     }
   },
   "variables": {},
@@ -70,7 +74,23 @@
       "properties": {
         "name": "[parameters('ApiAppName')]",
         "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('AppServicePlanName'))]"
-      }
+      },
+      "resources": [
+        {
+          "name": "appsettings",
+          "type": "config",
+          "apiVersion": "2015-08-01",
+          "dependsOn": [
+            "[resourceId('Microsoft.Web/sites', parameters('ApiAppName'))]"
+          ],
+          "tags": {
+            "displayName": "API Settings"
+          },
+          "properties": {
+            "ASPNETCORE_ENVIRONMENT": "[parameters('EnvironmentName')]"
+          }
+        }
+      ]
     },
     {
       "name": "[parameters('WebAppName')]",
@@ -87,7 +107,23 @@
       "properties": {
         "name": "[parameters('WebAppName')]",
         "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('AppServicePlanName'))]"
-      }
+      },
+      "resources": [
+        {
+          "name": "appsettings",
+          "type": "config",
+          "apiVersion": "2015-08-01",
+          "dependsOn": [
+            "[resourceId('Microsoft.Web/sites', parameters('WebAppName'))]"
+          ],
+          "tags": {
+            "displayName": "Web Settings"
+          },
+          "properties": {
+            "ASPNETCORE_ENVIRONMENT": "[parameters('EnvironmentName')]"
+          }
+        }
+      ]
     }
   ],
   "outputs": {}
