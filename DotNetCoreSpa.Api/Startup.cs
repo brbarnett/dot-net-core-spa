@@ -22,8 +22,6 @@ namespace DotNetCoreSpa.Api
         {
             services.AddAzureAdWebApiAuthentication();
 
-            services.AddMvc();
-
             services.AddCors(options =>
             {
                 options.AddPolicy("Policy", builder => builder
@@ -33,17 +31,24 @@ namespace DotNetCoreSpa.Api
                     .AllowCredentials()
                 );
             });
+
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            app.UseCors("Policy");
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
 
-            app.UseRewriter(new RewriteOptions().AddIISUrlRewrite(env.ContentRootFileProvider, "urlRewrite.config"));
-            
             app.UseAuthentication();
 
+            app.UseCors("Policy");
+
+            //app.UseRewriter(new RewriteOptions().AddIISUrlRewrite(env.ContentRootFileProvider, "urlRewrite.config"));
+            
             app.UseMvc();
         }
     }
