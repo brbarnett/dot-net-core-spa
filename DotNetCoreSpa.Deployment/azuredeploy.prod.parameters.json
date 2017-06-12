@@ -7,6 +7,12 @@
     },
     "AppServicePlanSkuName": {
       "value": "F1"
+    },
+    "ApiAppName": {
+      "value": "dot-net-core-api-prod"
+    },
+    "WebAppName": {
+      "value": "dot-net-core-web-prod"
     }
   }
 }

@@ -3,13 +3,14 @@
 #Requires -Module Azure.Storage
 
 Param(
-    [string] [Parameter(Mandatory=$true)] $ResourceGroupLocation,
+	[string] [Parameter(Mandatory=$true)] $Environment,
+    [string] $ResourceGroupLocation = 'centralus',
     [string] $ResourceGroupName = 'DotNetCoreSpa',
     [switch] $UploadArtifacts,
     [string] $StorageAccountName,
     [string] $StorageContainerName = $ResourceGroupName.ToLowerInvariant() + '-stageartifacts',
     [string] $TemplateFile = 'azuredeploy.json',
-    [string] $TemplateParametersFile = 'azuredeploy.parameters.json',
+    [string] $TemplateParametersFile = 'azuredeploy.' + $Environment.toLowerInvariant() + '.parameters.json',
     [string] $ArtifactStagingDirectory = '.',
     [string] $DSCSourceFolder = 'DSC',
     [switch] $ValidateOnly

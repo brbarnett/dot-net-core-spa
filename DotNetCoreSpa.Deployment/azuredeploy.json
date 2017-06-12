@@ -26,6 +26,14 @@
       "metadata": {
         "description": "Describes plan's pricing tier and capacity. Check details at https://azure.microsoft.com/en-us/pricing/details/app-service/"
       }
+    },
+    "ApiAppName": {
+      "type": "string",
+      "minLength": 1
+    },
+    "WebAppName": {
+      "type": "string",
+      "minLength": 1
     }
   },
   "variables": {},
@@ -46,6 +54,41 @@
         "name": "[parameters('AppServicePlanName')]",
         "numberOfWorkers": 1
       }
-    }],
+    },
+    {
+      "name": "[parameters('ApiAppName')]",
+      "type": "Microsoft.Web/sites",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "2015-08-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', parameters('AppServicePlanName'))]"
+      ],
+      "tags": {
+        "[concat('hidden-related:', resourceId('Microsoft.Web/serverfarms', parameters('AppServicePlanName')))]": "Resource",
+        "displayName": "dot-net-core-spa-api"
+      },
+      "properties": {
+        "name": "[parameters('ApiAppName')]",
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('AppServicePlanName'))]"
+      }
+    },
+    {
+      "name": "[parameters('WebAppName')]",
+      "type": "Microsoft.Web/sites",
+      "location": "[resourceGroup().location]",
+      "apiVersion": "2015-08-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', parameters('AppServicePlanName'))]"
+      ],
+      "tags": {
+        "[concat('hidden-related:', resourceId('Microsoft.Web/serverfarms', parameters('AppServicePlanName')))]": "Resource",
+        "displayName": "dot-net-core-spa-web"
+      },
+      "properties": {
+        "name": "[parameters('WebAppName')]",
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('AppServicePlanName'))]"
+      }
+    }
+  ],
   "outputs": {}
 }
