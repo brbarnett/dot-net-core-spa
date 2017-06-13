@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 
 namespace DotNetCoreSpa.Api
 {
@@ -22,10 +21,11 @@ namespace DotNetCoreSpa.Api
         {
             services.AddAzureAdWebApiAuthentication();
 
+            string[] origins = this.Configuration["Cors:Origins"].Split(',');
             services.AddCors(options =>
             {
                 options.AddPolicy("Policy", builder => builder
-                    .WithOrigins(this.Configuration["Cors:Origin"])
+                    .WithOrigins(origins)
                     .AllowAnyMethod()
                     .AllowAnyHeader()
                     .AllowCredentials()
@@ -47,8 +47,8 @@ namespace DotNetCoreSpa.Api
 
             app.UseCors("Policy");
 
-            //app.UseRewriter(new RewriteOptions().AddIISUrlRewrite(env.ContentRootFileProvider, "urlRewrite.config"));
-            
+            app.UseRewriter(new RewriteOptions().AddIISUrlRewrite(env.ContentRootFileProvider, "urlRewrite.config"));
+
             app.UseMvc();
         }
     }
