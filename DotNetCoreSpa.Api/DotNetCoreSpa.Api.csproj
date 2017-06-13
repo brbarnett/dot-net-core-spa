@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\" />
+    <None Include="urlRewrite.config" CopyToPublishDirectory="PreserveNewest" />
   </ItemGroup>
 
   <ItemGroup>
