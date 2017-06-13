@@ -11,6 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{151D2E53-A2C4-4D7D-83FE-D05416EBD58E}") = "DotNetCoreSpa.Deployment", "DotNetCoreSpa.Deployment\DotNetCoreSpa.Deployment.deployproj", "{62A45B84-8C58-4FCF-B99E-A9C8A9F3D13E}"
