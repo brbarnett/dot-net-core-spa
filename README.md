@@ -1,5 +1,5 @@
 # dot-net-core-spa
-This repository contains a reference architecture for an Angular 4 SPA, hosted separately from an API, authenticated against Azure AD. This is meant to be a quickstart template for faster and more consistent builds.
+This repository contains a reference architecture for an Angular 4 SPA, hosted separately from an API, authenticated against Azure AD. This is meant to be a quickstart template for faster and more consistent builds. Please contact me at [bbarnett@rightpoint.com](mailto:bbarnett@rightpoint.com) if you have questions.
 
 ## Stack
 These applications built to be hosted separately to promote scalability and deployment independence. The Client application communicates with the API application via CORS across domains. Authentication is handled by the Angular application, which passes a bearer token to the API application. The basic stack is as follows:
