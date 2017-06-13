@@ -6,6 +6,7 @@ import { HttpModule, Http } from '@angular/http';
 
 // authentication - taken from https://github.com/benbaran/adal-angular4-example
 import { Adal4Service, Adal4HTTPService } from 'adal-angular4';
+import { LoggedInGuard } from './authentication/logged-in.guard';
 
 // components
 import { AppComponent } from './app.component';
@@ -19,8 +20,8 @@ import { UrlService } from './services/url.service';
 import { ValuesService } from './services/values.service';
 
 const appRoutes: Routes = [
-    { path: '', component: HomeComponent, canActivate: [] },
-    { path: 'values', component: ValuesComponent, canActivate: [] }
+    { path: '', component: HomeComponent, canActivate: [LoggedInGuard] },
+    { path: 'values', component: ValuesComponent, canActivate: [LoggedInGuard] }
 ];
 
 @NgModule({
@@ -41,6 +42,7 @@ const appRoutes: Routes = [
         UrlService,
         ValuesService,
         Adal4Service,
+        LoggedInGuard,
         {
             provide: Adal4HTTPService,
             useFactory: Adal4HTTPService.factory,

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Adal4Service, Adal4HTTPService } from 'adal-angular4';
+import { Adal4Service } from 'adal-angular4';
 
 import { AuthSecretService } from './services/auth-secret.service';
 
@@ -28,7 +28,7 @@ const config = AuthSecretService.getConfig();
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-    constructor(private auth: Adal4Service, private http: Adal4HTTPService) {
+    constructor(private auth: Adal4Service) {
         this.auth.init(config);
     }
 
@@ -36,11 +36,6 @@ export class AppComponent {
 
         // Handle callback if this is a redirect from Azure
         this.auth.handleWindowCallback();
-
-        // Check if the user is authenticated. If not, call the login() method
-        if (!this.auth.userInfo.authenticated) {
-            this.auth.login();
-        }
     }
 
     public logout() {

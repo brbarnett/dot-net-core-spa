@@ -11,6 +11,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <Folder Include="src\app\authentication\" />
         <Folder Include="wwwroot\" />
         <None Include="urlRewrite.config" CopyToPublishDirectory="PreserveNewest" />
     </ItemGroup>
