@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26510.0
+VisualStudioVersion = 15.0.26606.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetCoreSpa.Web", "DotNetCoreSpa.Web\DotNetCoreSpa.Web.csproj", "{189134D0-D08A-49A4-AD3D-B57E749ED650}"
 EndProject
@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{151D2E53-A2C4-4D7D-83FE-D05416EBD58E}") = "DotNetCoreSpa.Deployment", "DotNetCoreSpa.Deployment\DotNetCoreSpa.Deployment.deployproj", "{62A45B84-8C58-4FCF-B99E-A9C8A9F3D13E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetCoreSpa.Application", "DotNetCoreSpa.Application\DotNetCoreSpa.Application.csproj", "{9E933651-FA9A-41F2-9A27-C664A75553D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{62A45B84-8C58-4FCF-B99E-A9C8A9F3D13E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62A45B84-8C58-4FCF-B99E-A9C8A9F3D13E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62A45B84-8C58-4FCF-B99E-A9C8A9F3D13E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E933651-FA9A-41F2-9A27-C664A75553D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E933651-FA9A-41F2-9A27-C664A75553D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E933651-FA9A-41F2-9A27-C664A75553D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E933651-FA9A-41F2-9A27-C664A75553D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

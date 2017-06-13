@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Rewrite;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
+using DotNetCoreSpa.Application.Services;
+
 namespace DotNetCoreSpa.Api
 {
     public class Startup
@@ -33,6 +35,8 @@ namespace DotNetCoreSpa.Api
             });
 
             services.AddMvc();
+
+            services.AddTransient<IValuesService, ValuesService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
