@@ -28,6 +28,8 @@ This project is built to run on SSL locally at https://localhost:44332/ (on Wind
 ### Client (Web) application
 This project is also built to run on SSL but using the Angular CLI's `ng serve --ssl` command. `npm start` is also set up to work. Either command will launch the site at https://localhost:4200 [note: this is a reply URL] with hot reload. Since Angular CLI circumvents .NET Core, it's a good idea to test it before deploying. Run `ng build` and run the Web project without debugger - it will launch at https://localhost:44326 [note: this is a reply URL].
 
+Please add your AD tenant/client IDs to the ./src/app/services/auth-secret.service.ts file -- there is an example provided for formatting purposes.
+
 ## Deployment
 
 ### API application
